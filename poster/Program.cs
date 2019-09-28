@@ -1,11 +1,15 @@
-﻿using poster.Entities;
+﻿using System;
+using System.Linq;
+using poster.Entities;
 
 namespace poster {
 	public class Program {
 		static void Main(string[] args) {
-			Post post = GetPost();
+			string pathToSettingsJson = args.First();
 
-			IPoster[] posters = GetPosters();
+			Post post = GetPost(args);
+
+			IPoster[] posters = GetPosters(args);
 
 			foreach (IPoster poster in posters) {
 				poster.Post(post);
