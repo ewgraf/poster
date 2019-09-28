@@ -4,8 +4,6 @@ using poster.Entities;
 namespace poster {
 	public class Program {
 		static void Main(string[] args) {
-			string pathToSettingsJson = args.First();
-
 			Post post = Post.FindPosts(@"C:\Users\Ewgraf\Documents\GitHub\poster\poster\bin\Debug\netcoreapp3.0\posts")
 							.First();
 
