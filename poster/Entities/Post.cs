@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -33,9 +34,13 @@ namespace poster.Entities {
 				post.MultilineText = File.ReadAllText(pathOfText);
 				post.PathToImageToAttach = pathOfImage;
 				post.Hashtags = File.ReadAllText(pathOfHashtags)
-					.Replace(" ", "") // "#наруто #тест #автоматической #постилки"
-									  // → "#наруто#тест#автоматической#постилки"
-					.Split('#');	  // → "наруто", "тест", "автоматической", "постилки"
+					.Replace(" ", "") // "#наруто #тест #автоматической #постилки\r\n"
+									  // → "#наруто#тест#автоматической#постилки\r\n"
+					.Replace(Environment.NewLine, "")
+									  // → "#наруто #тест #автоматической #постилки"
+					.Split('#', StringSplitOptions.RemoveEmptyEntries)
+									  // → "наруто", "тест", "автоматической", "постилки"
+					;
 				posts.Add(post);
 			}
 

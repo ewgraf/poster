@@ -16,8 +16,8 @@ namespace poster.Entities {
 				string posterName = Path.GetFileNameWithoutExtension(posterJsonPath);
 				Poster poster = null;
 				if (posterName == "telegram") {
-					poster = new TelegramPoster();
 					string telegramPosterJson = File.ReadAllText(posterJsonPath);
+					poster = new TelegramPoster();
 					
 					posters.Add(poster);
 				}
