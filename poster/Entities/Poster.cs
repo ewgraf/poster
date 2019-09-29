@@ -25,6 +25,16 @@ namespace poster.Entities {
 					long chatId = telegramPosterSettings.GetValue("chatId").Value<long>();
 					poster = new TelegramPoster(accessToken, chatId);
 					posters.Add(poster);
+				} else if (posterName == "vk") {
+					string posterSettingsJson = File.ReadAllText(posterJsonPath);
+					JObject posterSettings = JsonConvert.DeserializeObject<JObject>(posterSettingsJson);
+					string accessToken = posterSettings.GetValue("accessToken").Value<string>();
+					string clientSecret = posterSettings.GetValue("clientSecret").Value<string>();
+					ulong appId = posterSettings.GetValue("appId").Value<ulong>();
+					string login = posterSettings.GetValue("login").Value<string>();
+					string password = posterSettings.GetValue("password").Value<string>();
+					poster = new VkPoster(accessToken, appId, clientSecret, login, password);
+					posters.Add(poster);
 				}
 			}
 

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using poster.Entities;
+using poster.Entities.Posters;
 
 namespace poster {
 	public class Program {
@@ -11,7 +12,7 @@ namespace poster {
 
 			;
 
-			foreach (Poster poster in posters) {
+			foreach (Poster poster in posters.Where(p => p is VkPoster)) {
 				poster.Post(post).Wait();
 			}
 		}
