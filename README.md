@@ -1,4 +1,4 @@
 # poster
-App that posts to multiple social networks (login required).
+App that posts to multiple social networks.
 
 Can post to: Telegram, VK,
