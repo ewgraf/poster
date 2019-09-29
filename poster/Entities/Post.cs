@@ -29,10 +29,10 @@ namespace poster.Entities {
 			foreach (string pathOfFolderOfPost in pathesOfFolderOfPosts) {
 				string pathOfText = Directory.GetFiles(pathOfFolderOfPost, "*.txt").Single();
 				string pathOfHashtags = Directory.GetFiles(pathOfFolderOfPost, "*.#").Single();
-				string pathOfImage = Directory.GetFiles(pathOfFolderOfPost, "*.jpg").Single();
+				string pathOfImages = Directory.GetFiles(pathOfFolderOfPost, "*.jpg").Single();
 				var post = new Post();
 				post.MultilineText = File.ReadAllText(pathOfText);
-				post.PathToImageToAttach = pathOfImage;
+				post.PathToImageToAttach = pathOfImages;
 				post.Hashtags = File.ReadAllText(pathOfHashtags)
 					.Replace(" ", "") // "#наруто #тест #автоматической #постилки\r\n"
 									  // → "#наруто#тест#автоматической#постилки\r\n"

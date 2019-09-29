@@ -12,7 +12,7 @@ namespace poster {
 			;
 
 			foreach (Poster poster in posters) {
-				poster.Post(post);
+				poster.Post(post).Wait();
 			}
 		}
 	}
