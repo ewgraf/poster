@@ -15,10 +15,10 @@ namespace poster.Entities.Posters {
 		}
 
 		public override async Task Post(Post post) {
-			// @Tor Browser\Browser\TorBrowser\Data\Tor\torrc
-			// +SocksPort 127.0.0.1:9050
-			var botClient = new TelegramBotClient(_accessToken, new HttpToSocks5Proxy("127.0.0.1", 9050));
 			try {
+				// @Tor Browser\Browser\TorBrowser\Data\Tor\torrc
+				// +SocksPort 127.0.0.1:9050
+				var botClient = new TelegramBotClient(_accessToken, new HttpToSocks5Proxy("127.0.0.1", 9050));
 				var imageStream = System.IO.File.OpenRead(post.PathToImageToAttach);
 				var mediaPhoto = new InputMediaPhoto();
 				mediaPhoto.Media = new InputMedia(imageStream, "test-file-name");
